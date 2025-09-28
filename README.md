@@ -22,6 +22,7 @@ Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 ---
 
 ## 📂 Folder Structure:
+```
 BioLexis/
 ├── configs/ # Configuration files (YAML)
 │ └── default.yaml
@@ -54,7 +55,7 @@ BioLexis/
 ├── README.md # Project documentation
 └── LICENSE
 
-
+```
 ---
 ## 🚀 Features
 
