@@ -1,68 +1,110 @@
-### **Project Overview**
+# BioLexis: A Hybrid Intelligence Engine for Genomic Novelty Detection
 
-The BioLexis project is a sophisticated bioinformatics pipeline designed to analyze environmental DNA (eDNA) from sources like water or soil. Its primary goal is to identify which organisms are present in a sample by classifying their 18S rRNA gene sequences—a common genetic marker.
+A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and supervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
 
-What makes this project powerful is its **dual-analysis approach**. It doesn't just identify known organisms; it is also specifically designed to discover potentially new, unclassified, or anomalous sequences, making it a tool for both routine biodiversity monitoring and novel discovery. The project was developed in the context of the Smart India Hackathon 2025.
+![GitHub Banner](https://user-images.githubusercontent.com/109479893/206894274-a62a962a-b8a7-4927-968a-63795d2c8846.png)
 
-Here is a step-by-step breakdown of how the entire system works, from raw DNA sequence to final report.
+
+## 📖 Introduction
+
+In fields like environmental monitoring, epidemiology, and metagenomics, quickly identifying organisms from DNA sequences is critical. While existing tools can identify known organisms, they often fail to characterize novel or divergent sequences, which may represent hidden biodiversity or emerging pathogens. 
+
+BioLexis addresses this challenge by synthesizing evidence from two distinct machine learning arms to provide a confident, context-aware status for every sequence. It moves beyond simple classification to actively discover and flag novel biological entities.
 
 ---
+## 🧬 Workflow & Demo
 
-### **Step 1: Feature Engineering (Turning DNA into Data)**
+Our pipeline employs a two-pronged approach. The supervised arm provides taxonomic predictions based on a trusted reference database, while the unsupervised arm builds a "map of known biodiversity" to identify sequences that are statistical outliers or divergent members of known groups. A final Decision Engine synthesizes this evidence to deliver a definitive classification.
 
-The pipeline's first job is to convert raw genetic sequences (strings of A, T, C, G) into a numerical format that a machine learning model can understand.
+### 📹 Demo Video
+Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 
-* **Multi k-mer Counting:** The system slides a window of size 'k' across each DNA sequence to count the occurrences of all possible DNA substrings of that length. For example, if k=4, it counts "ATGC", "TGCA", etc.
-* **Multi-Scale Approach:** BioLexis cleverly uses multiple 'k' sizes simultaneously (k=4, 8, and 12). This is a key feature.
-    * **k=4:** Short k-mers capture broad, fundamental compositional signatures of the DNA.
-    * **k=8:** Medium-length k-mers provide more specific signals, often corresponding to genus-level biological features.
-    * **k=12:** Long k-mers capture highly specific motifs that can be unique to a particular species.
+---
+## 🚀 Features
 
-By combining these scales, the system creates a rich, high-dimensional numerical vector for each sequence that represents its biological information at different levels of detail.
+* Hybrid ML Approach: Combines Logistic Regression classifiers with HDBSCAN anomaly detection for robust analysis.
+* Novelty Detection: Explicitly identifies two types of novelty:
+    * Emergent Taxa: Divergent members within known groups (e.g., new strains or species).
+    * High-Confidence Novelty: Sequences with no close relatives in the reference map.
+* Interactive Reporting: Generates a single, self-contained HTML report with interactive Plotly visualizations for intuitive data exploration.
+* Efficient & Scalable: Employs a "train once, predict many" model, where the computationally expensive reference map is built once and reused for rapid analysis of many input samples.
+* Multi-k-mer Featurization: Uses a range of k-mer sizes to create a rich, multi-resolution embedding space for improved model accuracy.
 
-### **Step 2: Feature Weighting (Identifying Important Signals)**
+---
+## 🛠 Tech Stack
 
-The raw k-mer counts can be noisy. Some k-mers are very common across all life forms and don't provide much useful information for telling species apart.
+* Backend: Python
+* ML/Data Science: Scikit-learn, PyTorch, Pandas, NumPy
+* Dimensionality Reduction & Clustering: UMAP-learn, HDBSCAN
+* Visualization: Plotly, Matplotlib
+* Bioinformatics: BioPython
 
-* **TF-IDF (Term Frequency-Inverse Document Frequency):** To solve this, the pipeline applies TF-IDF, a technique borrowed from text analysis. It re-weights the k-mer counts.
-    * It **amplifies the importance** of rare k-mers that are discriminative (i.e., specific to only a few organisms).
-    * It **suppresses the importance** of universally common k-mers that are essentially biological noise.
+---
+## ⚙ Installation (for Users)
 
-This step refines the numerical vector into a more potent "genomic signature" that is optimized for classification.
+To run the BioLexis pipeline on your own data, follow these steps:
 
-### **Step 3: Dimensionality Reduction (Making Data Efficient)**
+1.  Clone the repository:
+    bash
+    git clone [https://github.com/KushalJain07/BioLexis.git](https://github.com/KushalJain07/BioLexis.git)
+    cd BioLexis
+    
 
-The TF-IDF vectors are still very large and computationally intensive to work with. The next step is to intelligently compress them without losing the essential information.
+2.  Create a virtual environment (recommended):
+    bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use venv\Scripts\activate
+    
 
-* **Deep Autoencoder:** The system uses an unsupervised neural network called an Autoencoder. It's trained to take the high-dimensional vector, squeeze it through a narrow "bottleneck," and then try to reconstruct the original vector on the other side.
-* **Dense Embedding:** The compressed data in the bottleneck is a **dense latent representation**, or an "embedding." This low-dimensional embedding optimally captures the primary patterns (variance) in the data while filtering out noise. This final, efficient embedding is used for all subsequent analysis.
+3.  Install the required dependencies:
+    bash
+    pip install -r requirements.txt
+    
 
-### **Step 4: The Dual-Analysis Engine**
+4.  Run the pipeline:
+    bash
+    python src/pipeline.py --reference path/to/reference.csv --input path/to/your.fasta --out results/
+    
 
-This is the core of the project where the actual analysis happens. The embedding for each sequence is sent to two parallel arms simultaneously.
+---
+## 👨‍💻 Installation (for Developers)
 
-* **Arm 1: Supervised Classification**
-    * **Goal:** To identify known organisms.
-    * **Method:** This arm uses a suite of **hierarchical, per-rank Logistic Regression models**. Based on your saved information, this aligns with the methods you are using. The hierarchical structure is crucial because it mirrors biological taxonomy (Kingdom > Phylum > Class > ... > Species). The models assign a precise probability that the sequence belongs to a specific known organism based on the decision boundaries they learned during training on labeled data.
+To contribute to the development of BioLexis:
 
-* **Arm 2: Unsupervised Discovery**
-    * **Goal:** To detect novel or anomalous sequences.
-    * **Method:** This arm uses a two-tiered statistical approach for novelty detection.
-        1.  **Density-Based Clustering (HDBSCAN):** First, the HDBSCAN algorithm maps the overall structure of all the sequence embeddings. Any embedding that falls in a low-density region—far away from any established cluster of known organisms—is immediately flagged as a major outlier.
-        2.  **Intra-Cluster Anomaly Detection:** For embeddings that *do* fall within a known cluster, a second check is performed. The system calculates the distance of the embedding from the center of its assigned cluster. If this distance exceeds a statistical threshold (e.g., it's further away than 98% of the other members), it is flagged as an anomaly—an atypical member of that group.
+1.  Fork and clone the repository.
 
-### **Step 5: Rule-Based Synthesis (The Final Verdict)**
+2.  Set up the development environment using the steps above.
 
-The final step is to integrate the results from both the Classification Arm and the Discovery Arm to make a single, coherent decision for each sequence. A simple rule-based engine assigns one of four flags:
+3.  Install development dependencies (includes testing tools like pytest):
+    bash
+    pip install -r requirements-dev.txt
+    
+    4.  Run the test suite:
+    bash
+    pytest
+    
 
-1.  **Known Organism:** The classifier confidently identifies the sequence, and it sits comfortably inside its expected genetic cluster. (Both arms agree).
-2.  **High-Confidence Novelty:** The sequence is a major outlier according to the clustering model and cannot be classified. (Clear discovery).
-3.  **Novel Candidate (or Unusual Find):** The sequence is flagged as an anomaly within a known group. It's too atypical to be confidently classified to the species level but clearly belongs to a known family or genus. (Potential new species/strain).
-4.  **Flagged for Review (or Conflicting Result):** The classifier confidently identifies the sequence, but the discovery arm flags it as a structural outlier for that very same group. (The arms disagree, requiring manual expert review).
+---
+## 🤝 Contributing
 
-### **Final Output**
+We welcome contributions! Please follow these guidelines:
+1.  Fork the repository and create a new branch for your feature or bug fix.
+2.  Follow the PEP 8 coding style guidelines.
+3.  Add tests for any new functionality.
+4.  Submit a pull request with a clear description of your changes.
 
-The entire analysis is compiled into an interactive HTML report. This user-friendly dashboard includes:
-* **A UMAP visualization:** A 2D map that visually plots the clusters of sequences, allowing for an intuitive understanding of the sample's biodiversity.
-* **Sample Richness Metrics:** Quantitative data about the diversity found in the sample.
-* **Clear Classification:** Each sequence is clearly labeled with one of the four outcomes, allowing for immediate visual analysis and interpretation.
+---
+## 🐞 Known Issues
+
+* The Decision Engine currently iterates through sequences to apply rules. For extremely large datasets (millions of unique sequences), this loop could be vectorized for improved performance.
+* The Known Islands Library check requires the user to manually curate a list of rare organism embeddings. Future work could involve automatically populating this library.
+
+---
+## 👥 Team
+
+This project was developed for the Smart India Hackathon by Team Geek Velocity.
+
+---
+## 📄 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
