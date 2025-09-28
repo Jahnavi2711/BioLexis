@@ -66,7 +66,7 @@ BioLexis/
 * Interactive Reporting: Generates a single, self-contained HTML report with interactive Plotly visualizations for intuitive data exploration.
 * Efficient & Scalable: Employs a "train once, predict many" model, where the computationally expensive reference map is built once and reused for rapid analysis of many input samples.
 * Multi-k-mer Featurization: Uses a range of k-mer sizes to create a rich, multi-resolution embedding space for improved model accuracy.
-
+  
 ---
 
 ## 🛠 Tech Stack
@@ -112,6 +112,7 @@ To run the BioLexis pipeline on your own data, follow these steps:
   ```  
 
 ---
+
 ## 👨‍💻 Installation (for Developers)
 
 To contribute to the development of BioLexis:
@@ -136,17 +137,13 @@ To contribute to the development of BioLexis:
 
 
 ---
-
-
-##🐞 Known Issues
+## 🐞 Known Issues
 
 * The Decision Engine currently iterates through sequences to apply rules. For extremely large datasets (millions of unique sequences), this loop could be vectorized for improved performance.
 * The Known Islands Library check requires the user to manually curate a list of rare organism embeddings. Future work could involve automatically populating this library.
 
 ---
-
-
-##👥 Team
+## 👥 Team
 
 This project was developed for the Smart India Hackathon by Team Geek Velocity.
 
