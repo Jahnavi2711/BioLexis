@@ -1,6 +1,6 @@
 # BioLexis: A Hybrid Intelligence Engine for Genomic Novelty Detection
 
-A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and supervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
+A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and Unspervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
 
 ![GitHub Banner](https://user-images.githubusercontent.com/109479893/206894274-a62a962a-b8a7-4927-968a-63795d2c8846.png)
 
@@ -63,6 +63,7 @@ To run the BioLexis pipeline on your own data, follow these steps:
 
 4.  Run the pipeline:
     bash
+    
     python src/pipeline.py --reference path/to/reference.csv --input path/to/your.fasta --out results/
     
 
