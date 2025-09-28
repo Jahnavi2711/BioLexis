@@ -71,13 +71,13 @@ BioLexis/
 
 ## 🛠 Tech Stack
 
-* Backend: Python
-* ML/Data Science: Scikit-learn, PyTorch, Pandas, NumPy
-* Dimensionality Reduction & Clustering: UMAP-learn, HDBSCAN
-* Visualization: Plotly, Matplotlib,Seaborn
-* Bioinformatics: BioPython
-* Reporting: HTML
-* Cloud/GPU: Google Colab (T4/L4/A100), AWS
+* Backend:   Python
+* ML/Data Science:   Scikit-learn, PyTorch, Pandas, NumPy
+* Dimensionality Reduction & Clustering:   UMAP-learn, HDBSCAN
+* Visualization:   Plotly, Matplotlib,Seaborn
+* Bioinformatics:   BioPython
+* Reporting:   HTML
+* Cloud/GPU:   Google Colab (T4/L4/A100), AWS
 
 ---
 ## ⚙ Installation (for Users)
@@ -85,12 +85,11 @@ BioLexis/
 To run the BioLexis pipeline on your own data, follow these steps:
 
 1.  Clone the repository:
-
- 
+```
     bash
     git clone [https://github.com/KushalJain07/BioLexis.git](https://github.com/KushalJain07/BioLexis.git)
     cd BioLexis
-    
+  ```  
 
 3.  Create a virtual environment (recommended):
     bash
