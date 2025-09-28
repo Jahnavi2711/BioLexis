@@ -92,21 +92,24 @@ To run the BioLexis pipeline on your own data, follow these steps:
   ```  
 
 3.  Create a virtual environment (recommended):
+ ```
     bash
     python -m venv venv
     source venv/bin/activate  # On Windows, use venv\Scripts\activate
-    
+  ```  
 
-4.  Install the required dependencies:
+5.  Install the required dependencies:
+   ```
     bash
     pip install -r requirements.txt
-    
+    ```
 
-5.  Run the pipeline:
+7.  Run the pipeline:
+```
     bash
     
     python src/pipeline.py  --input path/to/your.fasta 
-    
+  ```  
 
 ---
 ## 👨‍💻 Installation (for Developers)
@@ -118,13 +121,15 @@ To contribute to the development of BioLexis:
 2.  Set up the development environment using the steps above.
 
 3.  Install development dependencies (includes testing tools like pytest):
+```
     bash
     pip install -r requirements-dev.txt
-    
+ ```   
     4.  Run the test suite:
+```
     bash
     pytest
-    
+ ```   
 
 
 
