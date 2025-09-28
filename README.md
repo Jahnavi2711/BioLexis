@@ -20,6 +20,43 @@ Our pipeline employs a two-pronged approach. The supervised arm provides taxonom
 Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 
 ---
+
+##📂 Folder Structure:
+
+
+BioLexis/
+├── configs/                  # Configuration files (YAML)
+│   └── default.yaml
+│
+├── data/
+│   ├── raw/                  # Raw input files (CSV/FASTA)
+│      ├── labels.csv        # Reference data for training
+│      └── new_sequences.fasta # Scientist's experimental sequences
+│   
+│
+├── results/                  # All pipeline outputs
+│   ├── per_sequence_results.csv
+│   ├── clusters_with_novelty.csv
+│   ├── abundance_by_assignment.csv
+│   └── report.html
+│
+├── src/                      # Source code
+│   ├── pipeline.py           # Main pipeline orchestrator
+│   ├── preprocess.py         # Cleaning and deduplication
+│   ├── kmers.py              # K-mer feature generation
+│   ├── embed.py              # Autoencoder embeddings
+│   ├── cluster.py            # UMAP + HDBSCAN clustering
+│   ├── label_transfer.py     # Per-rank classifier training/prediction
+│   ├── abundance.py          # Abundance calculation
+│   ├── diversity.py          # Diversity metrics (Shannon, Simpson)
+│   ├── visualize.py          # Visualization utilities
+│   └── evaluate.py           # Performance evaluation
+│
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project documentation
+
+
+---
 ## 🚀 Features
 
 * Hybrid ML Approach: Combines Logistic Regression classifiers with HDBSCAN anomaly detection for robust analysis.
@@ -31,13 +68,16 @@ Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 * Multi-k-mer Featurization: Uses a range of k-mer sizes to create a rich, multi-resolution embedding space for improved model accuracy.
 
 ---
+
 ## 🛠 Tech Stack
 
 * Backend: Python
 * ML/Data Science: Scikit-learn, PyTorch, Pandas, NumPy
 * Dimensionality Reduction & Clustering: UMAP-learn, HDBSCAN
-* Visualization: Plotly, Matplotlib
+* Visualization: Plotly, Matplotlib,Seaborn
 * Bioinformatics: BioPython
+* Reporting: HTML
+* Cloud/GPU: Google Colab (T4/L4/A100), AWS
 
 ---
 ## ⚙ Installation (for Users)
@@ -45,26 +85,28 @@ Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 To run the BioLexis pipeline on your own data, follow these steps:
 
 1.  Clone the repository:
+
+ 
     bash
     git clone [https://github.com/KushalJain07/BioLexis.git](https://github.com/KushalJain07/BioLexis.git)
     cd BioLexis
     
 
-2.  Create a virtual environment (recommended):
+3.  Create a virtual environment (recommended):
     bash
     python -m venv venv
     source venv/bin/activate  # On Windows, use venv\Scripts\activate
     
 
-3.  Install the required dependencies:
+4.  Install the required dependencies:
     bash
     pip install -r requirements.txt
     
 
-4.  Run the pipeline:
+5.  Run the pipeline:
     bash
     
-    python src/pipeline.py --reference path/to/reference.csv --input path/to/your.fasta --out results/
+    python src/pipeline.py  --input path/to/your.fasta 
     
 
 ---
@@ -85,14 +127,7 @@ To contribute to the development of BioLexis:
     pytest
     
 
----
-## 🤝 Contributing
 
-We welcome contributions! Please follow these guidelines:
-1.  Fork the repository and create a new branch for your feature or bug fix.
-2.  Follow the PEP 8 coding style guidelines.
-3.  Add tests for any new functionality.
-4.  Submit a pull request with a clear description of your changes.
 
 ---
 ## 🐞 Known Issues
@@ -105,7 +140,4 @@ We welcome contributions! Please follow these guidelines:
 
 This project was developed for the Smart India Hackathon by Team Geek Velocity.
 
----
-## 📄 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
