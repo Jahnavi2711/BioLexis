@@ -99,15 +99,13 @@ To run the BioLexis pipeline on your own data, follow these steps:
   ```  
 
 3.  Install the required dependencies:
-   ```
-    bash
+   ```bash
     pip install -r requirements.txt
 
     ```
 
 4.  Run the pipeline:
-```
-    bash
+```bash
     python src/pipeline.py  --input path/to/your.fasta 
   ```  
 
