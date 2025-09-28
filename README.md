@@ -2,7 +2,7 @@
 
 A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and Unspervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
 
-![GitHub Banner](https://user-images.githubusercontent.com/109479893/206894274-a62a962a-b8a7-4927-968a-63795d2c8846.png)
+![GitHub Banner]([https://companieslogo.com/img/orig/biolexistx_BIG-adf60c57.png?t=1701669045&download=true])
 
 
 ## 📖 Introduction
@@ -100,13 +100,16 @@ To run the BioLexis pipeline on your own data, follow these steps:
 
 3.  Install the required dependencies:
    
-   ```bash
+   ```
+   bash
     pip install -r requirements.txt```
-
+   ```
 4.  Run the pipeline:
 
-```bash
-    python src/pipeline.py  --input path/to/your.fasta 
+```
+   bash
+      python -m src.pipeline --config configs/fast.yaml --input data/raw/input.fasta --reference data/raw/labels.csv --out results/run1
+    
   ```  
 
 ---
@@ -128,7 +131,8 @@ To contribute to the development of BioLexis:
 4.  Run the test suite:
 
    
-``` bash
+```
+ bash
     pytest
  ```   
 
@@ -138,7 +142,6 @@ To contribute to the development of BioLexis:
 ## 🐞 Known Issues
 
 * The Decision Engine currently iterates through sequences to apply rules. For extremely large datasets (millions of unique sequences), this loop could be vectorized for improved performance.
-* The Known Islands Library check requires the user to manually curate a list of rare organism embeddings. Future work could involve automatically populating this library.
 
 ---
 ## 👥 Team
