@@ -21,39 +21,38 @@ Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 
 ---
 
-##📂 Folder Structure:
-
-
+## 📂 Folder Structure:
 BioLexis/
-├── configs/                  # Configuration files (YAML)
-│   └── default.yaml
+├── configs/ # Configuration files (YAML)
+│ └── default.yaml
 │
 ├── data/
-│   ├── raw/                  # Raw input files (CSV/FASTA)
-│      ├── labels.csv        # Reference data for training
-│      └── new_sequences.fasta # Scientist's experimental sequences
-│   
+│ ├── raw/ # Raw input files (CSV/FASTA)
+│ │ ├── labels.csv # Reference data for training
+│ │ └── new_sequences.fasta # Scientist's experimental sequences
+│ └── processed/ # Cleaned/processed intermediate files
 │
-├── results/                  # All pipeline outputs
-│   ├── per_sequence_results.csv
-│   ├── clusters_with_novelty.csv
-│   ├── abundance_by_assignment.csv
-│   └── report.html
+├── results/ # All pipeline outputs
+│ ├── per_sequence_results.csv
+│ ├── clusters_with_novelty.csv
+│ ├── abundance_by_assignment.csv
+│ └── report.html
 │
-├── src/                      # Source code
-│   ├── pipeline.py           # Main pipeline orchestrator
-│   ├── preprocess.py         # Cleaning and deduplication
-│   ├── kmers.py              # K-mer feature generation
-│   ├── embed.py              # Autoencoder embeddings
-│   ├── cluster.py            # UMAP + HDBSCAN clustering
-│   ├── label_transfer.py     # Per-rank classifier training/prediction
-│   ├── abundance.py          # Abundance calculation
-│   ├── diversity.py          # Diversity metrics (Shannon, Simpson)
-│   ├── visualize.py          # Visualization utilities
-│   └── evaluate.py           # Performance evaluation
+├── src/ # Source code
+│ ├── pipeline.py # Main pipeline orchestrator
+│ ├── preprocess.py # Cleaning and deduplication
+│ ├── kmers.py # K-mer feature generation
+│ ├── embed.py # Autoencoder embeddings
+│ ├── cluster.py # UMAP + HDBSCAN clustering
+│ ├── label_transfer.py # Per-rank classifier training/prediction
+│ ├── abundance.py # Abundance calculation
+│ ├── diversity.py # Diversity metrics (Shannon, Simpson)
+│ ├── visualize.py # Visualization utilities
+│ └── evaluate.py # Performance evaluation
 │
-├── requirements.txt          # Python dependencies
-├── README.md                 # Project documentation
+├── requirements.txt # Python dependencies
+├── README.md # Project documentation
+└── LICENSE
 
 
 ---
