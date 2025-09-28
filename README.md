@@ -87,27 +87,27 @@ To run the BioLexis pipeline on your own data, follow these steps:
 1.  Clone the repository:
 ```
     bash
-    git clone [https://github.com/KushalJain07/BioLexis.git](https://github.com/KushalJain07/BioLexis.git)
+    git clone -[
     cd BioLexis
   ```  
 
-3.  Create a virtual environment (recommended):
+2.  Create a virtual environment (recommended):
  ```
     bash
     python -m venv venv
     source venv/bin/activate  # On Windows, use venv\Scripts\activate
   ```  
 
-5.  Install the required dependencies:
+3.  Install the required dependencies:
    ```
     bash
     pip install -r requirements.txt
+
     ```
 
-7.  Run the pipeline:
+4.  Run the pipeline:
 ```
     bash
-    
     python src/pipeline.py  --input path/to/your.fasta 
   ```  
 
