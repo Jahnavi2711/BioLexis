@@ -1,5 +1,3 @@
-Of course. Here is a detailed, end-to-end explanation of the **BioLexis: eDNA to Taxonomy Classifier** project, based on the information you've provided.
-
 ### **Project Overview**
 
 The BioLexis project is a sophisticated bioinformatics pipeline designed to analyze environmental DNA (eDNA) from sources like water or soil. Its primary goal is to identify which organisms are present in a sample by classifying their 18S rRNA gene sequences—a common genetic marker.
