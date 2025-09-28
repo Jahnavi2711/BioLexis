@@ -121,11 +121,13 @@ To contribute to the development of BioLexis:
 2.  Set up the development environment using the steps above.
 
 3.  Install development dependencies (includes testing tools like pytest):
-```
-    bash
-    pip install -r requirements-dev.txt
- ```   
-    4.  Run the test suite:
+
+    ```
+        bash
+        pip install -r requirements-dev.txt
+    ```
+
+4.  Run the test suite:
 ```
     bash
     pytest
@@ -134,13 +136,17 @@ To contribute to the development of BioLexis:
 
 
 ---
-## 🐞 Known Issues
+
+
+##🐞 Known Issues
 
 * The Decision Engine currently iterates through sequences to apply rules. For extremely large datasets (millions of unique sequences), this loop could be vectorized for improved performance.
 * The Known Islands Library check requires the user to manually curate a list of rare organism embeddings. Future work could involve automatically populating this library.
 
 ---
-## 👥 Team
+
+
+##👥 Team
 
 This project was developed for the Smart India Hackathon by Team Geek Velocity.
 
