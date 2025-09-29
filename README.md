@@ -96,7 +96,7 @@ To run the BioLexis pipeline on your own data, follow these steps:
 1.  Clone the repository:
 ```
     bash
-    git clone -[
+    git clone repo url
     cd BioLexis
   ```  
 
@@ -121,29 +121,7 @@ To run the BioLexis pipeline on your own data, follow these steps:
     
   ```  
 
----
 
-## 👨‍💻 Installation (for Developers)
-
-To contribute to the development of BioLexis:
-
-1.  Fork and clone the repository.
-
-2.  Set up the development environment using the steps above.
-
-3.  Install development dependencies (includes testing tools like pytest):
-
-    ``` bash
-        pip install -r requirements-dev.txt
-    ```
-
-4.  Run the test suite:
-
-   
-```
- bash
-    pytest
- ```   
 
 
 
