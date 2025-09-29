@@ -2,11 +2,11 @@
 
 A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and Unspervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
 
-<img width="591" height="645" alt="image" src="https://github.com/user-attachments/assets/44672010-add1-43d3-a5a5-0b2f4fb0fc7a" />
+<img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/44672010-add1-43d3-a5a5-0b2f4fb0fc7a" />
 
-<img width="591" height="645" alt="image" src="https://github.com/user-attachments/assets/7d812f9d-6680-4a09-a900-aebcc3cc1316" />
+<img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/7d812f9d-6680-4a09-a900-aebcc3cc1316" />
 
-<img width="592" height="624" alt="image" src="https://github.com/user-attachments/assets/c7b3823b-fcd7-4a36-924d-8ae793515564" />
+<img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/c7b3823b-fcd7-4a36-924d-8ae793515564" />
 
 <img width="1206" height="533" alt="image" src="https://github.com/user-attachments/assets/6eb21dfc-556d-4bea-88f8-2af8dd5717a0" />
 
