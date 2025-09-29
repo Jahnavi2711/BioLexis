@@ -1,0 +1,60 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testing / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE/editor
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project data and results (generated)
+results/
+!results/README.md
+
+data/
+!data/README.md
+
+# Common large/intermediate artifacts
+**/cache/
+**/*.parquet
+**/*.npy
+**/*.npz
+**/*.joblib
+**/*.pkl
+**/*.pth
+
+# Logs and temp
+*.log
+*.tmp

@@ -1,0 +1,56 @@
+seed: 42
+io:
+  reference_csv: data/raw/reference.csv
+  labels_csv: data/raw/input.fasta
+  model_dir: results/models
+map_dir: results/reference_map
+preprocess:
+  seq_col: sequence
+  taxonomy_col: taxonomy
+  organism_col: organism_name
+  max_n_frac: 0.05
+  min_seq_len: 50
+kmers:
+  k:
+  - 4
+  - 6
+  n_features: 16384
+  normalize: true
+  batch_size: 10000
+  n_jobs: 11
+embed:
+  method: svd
+  svd_dim: 128
+  ae:
+    latent_dim: 64
+    hidden_dims:
+    - 512
+    - 256
+    batch_size: 2048
+    epochs: 10
+    lr: 0.002
+    weight_decay: 1.0e-06
+    device: auto
+    checkpoint_every: 5
+    early_stopping_patience: 3
+    num_workers: 4
+cluster:
+  umap_n_neighbors: 30
+  umap_min_dist: 0.1
+  umap_2d_components: 2
+  umap_10d_components: 8
+  hdbscan_min_cluster_size: 50
+  hdbscan_min_samples: 5
+  emergent_taxa_percentile: 95
+label_transfer:
+  ranks: ["domain","kingdom","phylum","class","order","family","genus","species"]
+  min_confidence: 0.6
+decision_engine:
+  min_classification_confidence: 0.85
+  known_islands_library_path: data/known_islands_embeddings.npy
+  known_islands_distance_threshold: 0.1
+abundance:
+  group_by: assignment
+outputs:
+  parquet_compression: snappy
+  report_html: report.html

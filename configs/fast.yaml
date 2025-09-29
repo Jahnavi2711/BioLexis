@@ -1,0 +1,63 @@
+seed: 42
+
+io:
+  reference_csv: "data/raw/reference.csv"
+  labels_csv: "data/raw/input.fasta"
+  model_dir: "results/models"
+  
+map_dir: "results/reference_map"
+
+preprocess:
+  seq_col: "sequence"
+  taxonomy_col: "taxonomy"
+  organism_col: "organism_name"
+  max_n_frac: 0.05
+  min_seq_len: 50
+
+# OPTIMIZED: Reduced k-mer sizes and features for speed
+kmers:
+  k: [4, 6]  # Reduced from [4, 6, 8] - fewer k-mers = faster processing
+  n_features: 32768  # Reduced from 65536 - smaller feature space
+  normalize: true
+  batch_size: 20000  # Increased batch size for faster processing
+  n_jobs: -1  # Use all available CPU cores
+
+embed:
+  method: "svd"  # Use SVD instead of autoencoder for speed
+  svd_dim: 128  # Reduced from 256
+  ae:
+    latent_dim: 64  # Reduced from 128
+    hidden_dims: [512, 256]  # Smaller network
+    batch_size: 2048  # Increased batch size
+    epochs: 10  # Reduced from 30
+    lr: 2e-3  # Higher learning rate for faster convergence
+    weight_decay: 1e-6
+    device: auto
+    checkpoint_every: 5
+    early_stopping_patience: 3  # Reduced patience
+    num_workers: 4  # Reduced workers to avoid overhead
+
+cluster:
+  umap_n_neighbors: 30  # Reduced from 50
+  umap_min_dist: 0.1
+  umap_2d_components: 2
+  umap_10d_components: 8  # Reduced from 10
+  hdbscan_min_cluster_size: 50  # Reduced from 100
+  hdbscan_min_samples: 5  # Reduced from 10
+  emergent_taxa_percentile: 95  # Reduced from 98
+
+label_transfer:
+  ranks: ["domain","kingdom","phylum","class","order","family","genus","species"]
+  min_confidence: 0.6
+
+decision_engine:
+  min_classification_confidence: 0.85  # Reduced from 0.90
+  known_islands_library_path: "data/known_islands_embeddings.npy"
+  known_islands_distance_threshold: 0.1
+
+abundance:
+  group_by: "assignment"
+
+outputs:
+  parquet_compression: "snappy"
+  report_html: "report.html"

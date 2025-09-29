@@ -1,0 +1,62 @@
+seed: 42
+
+io:
+  reference_csv: "data/raw/reference.csv"      # your reference data for training
+  labels_csv: "data/raw/input.fasta"           # your input sequences
+  model_dir: "results/models"
+  
+map_dir: "results/reference_map"               # NEW: Directory to save/load the reusable reference map
+
+preprocess:
+  seq_col: "sequence"
+  taxonomy_col: "taxonomy"
+  organism_col: "organism_name"
+  max_n_frac: 0.05
+  min_seq_len: 50
+
+# In your config.yaml
+kmers:
+  k: [4, 6, 8] # MODIFIED: Use a list of k-mer sizes
+  n_features: 65536
+  normalize: true
+
+embed:
+  method: "autoencoder"                        # "autoencoder" or "svd"
+  svd_dim: 256
+  ae:
+    latent_dim: 128
+    hidden_dims: [1024,512]
+    batch_size: 1024
+    epochs: 30
+    lr: 1e-3
+    weight_decay: 1e-6
+    device: auto                               # "auto" to pick cuda if available
+    checkpoint_every: 5
+    early_stopping_patience: 5
+    num_workers: 8
+
+cluster:
+  umap_n_neighbors: 50
+  umap_min_dist: 0.1
+  umap_2d_components: 2
+  umap_10d_components: 10
+  hdbscan_min_cluster_size: 100
+  hdbscan_min_samples: 10
+  emergent_taxa_percentile: 98                 # NEW: Threshold for identifying Emergent Taxa
+
+label_transfer:
+  ranks: ["domain","kingdom","phylum","class","order","family","genus","species"]
+  min_confidence: 0.6
+
+# NEW: Configuration for the final Decision Engine logic
+decision_engine:
+  min_classification_confidence: 0.90          # Confidence cutoff to consider a prediction "classified"
+  known_islands_library_path: "data/known_islands_embeddings.npy" # Optional: Path to rare organism embeddings
+  known_islands_distance_threshold: 0.1        # Distance cutoff for a match in the rare library
+
+abundance:
+  group_by: "assignment"
+
+outputs:
+  parquet_compression: "snappy"
+  report_html: "report.html"
