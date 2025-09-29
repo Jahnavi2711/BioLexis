@@ -27,7 +27,10 @@ Our pipeline employs a two-pronged approach. The supervised arm provides taxonom
 
 ### 📹 Demo Video
 Watch a full walkthrough of the BioLexis pipeline and its interactive report:
+
 https://youtu.be/Jd4klmHYz4k?si=OhANRc2wRsf0Uo0U
+
+https://taxonomy-report.tiiny.site/
 ---
 
 ## 📂 Folder Structure:
