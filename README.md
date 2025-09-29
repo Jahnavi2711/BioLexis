@@ -4,7 +4,8 @@ A high-performance bioinformatics pipeline by *Team Geek Velocity that combines 
 
 <img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/44672010-add1-43d3-a5a5-0b2f4fb0fc7a" />
 
-<img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/7d812f9d-6680-4a09-a900-aebcc3cc1316" />
+<img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/d7b9a8ac-ac9f-417d-aa71-240bb9857269" />
+
 
 <img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/c7b3823b-fcd7-4a36-924d-8ae793515564" />
 
