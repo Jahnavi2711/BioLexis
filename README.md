@@ -2,7 +2,6 @@
 
 A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and Unspervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
 
-![GitHub Banner]([https://companieslogo.com/img/orig/biolexistx_BIG-adf60c57.png?t=1701669045&download=true])
 
 
 ## 📖 Introduction
