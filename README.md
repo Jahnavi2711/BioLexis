@@ -1,15 +1,20 @@
-# BioLexis: A Hybrid Intelligence Engine for Genomic Novelty Detection
+f# BioLexis: A Hybrid Intelligence Engine for Genomic Novelty Detection
 
 A high-performance bioinformatics pipeline by *Team Geek Velocity that combines deep learning, supervised learning and Unspervised learning's anomaly detection to classify environmental DNA (eDNA) and uncover novel biodiversity.*
 
+### Plots & Figures
 <img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/44672010-add1-43d3-a5a5-0b2f4fb0fc7a" />
 
 <img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/d7b9a8ac-ac9f-417d-aa71-240bb9857269" />
 
+<img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/15ddf422-4501-4fa0-ab50-f65db5619f82" />
 
 <img width="350" height="320" alt="image" src="https://github.com/user-attachments/assets/c7b3823b-fcd7-4a36-924d-8ae793515564" />
 
+
+
 <img width="1206" height="533" alt="image" src="https://github.com/user-attachments/assets/6eb21dfc-556d-4bea-88f8-2af8dd5717a0" />
+
 
 
 
@@ -24,7 +29,6 @@ BioLexis addresses this challenge by synthesizing evidence from two distinct mac
 ## 🧬 Workflow & Demo
 
 Our pipeline employs a two-pronged approach. The supervised arm provides taxonomic predictions based on a trusted reference database, while the unsupervised arm builds a "map of known biodiversity" to identify sequences that are statistical outliers or divergent members of known groups. A final Decision Engine synthesizes this evidence to deliver a definitive classification.
-
 ### 📹 Demo Video
 Watch a full walkthrough of the BioLexis pipeline and its interactive report:
 
